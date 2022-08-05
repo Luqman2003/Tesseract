@@ -16,7 +16,7 @@ app.use(multer().none());
  */
 app.get('/paragraph', async (req, res) => {
   try {
-    Tesseract.recognize('./paragraph.png', 'eng')
+    Tesseract.recognize('./handwritten-paper.png', 'eng')
       .then(
         (response) => {
           // response.data.text;
