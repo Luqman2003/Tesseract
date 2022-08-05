@@ -7,6 +7,9 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(multer().none());
 
+/**
+ *
+ */
 app.get('/paragraph', async (req, res) => {
   try {
     Tesseract.recognize('./paragraph.png', 'eng')
