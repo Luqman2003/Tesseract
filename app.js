@@ -31,7 +31,7 @@ app.post('/doOCR', async (req, res) => {
       res.status(500);
     }
   } else {
-    res.status(400);
+    res.status(500);
   }
 });
 
