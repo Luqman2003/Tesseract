@@ -37,7 +37,7 @@
     app.append(img);
     let params = new FormData();
     params.append('imgSrc', str);
-    fetch('/paragraph', {method: 'POST', body: params})
+    fetch('/doOCR', {method: 'POST', body: params})
       .then(statusCheck)
       .then(res => res.json())
       .then((res) => {

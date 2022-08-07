@@ -14,20 +14,24 @@ app.use(multer().none());
 /**
  *
  */
-app.post('/paragraph', async (req, res) => {
+app.post('/doOCR', async (req, res) => {
   let imgSrc = req.body.imgSrc;
-  try {
-    Tesseract.recognize(imgSrc, 'eng')
-      .then(
-        (response) => {
-          // response.data.text;
-          res.send({
-            'text': response.data.text
+  if (imgSrc) {
+    try {
+      Tesseract.recognize(imgSrc, 'eng')
+        .then(
+          (response) => {
+            res.send({
+              'text': response.data.text
+            });
+            console.log(response);
           });
-          console.log(response.data.text);
-        });
-  } catch (error) {
-    console.log(error);
+    } catch (error) {
+      console.log(error);
+      res.status(500);
+    }
+  } else {
+    res.status(400);
   }
 });
 
