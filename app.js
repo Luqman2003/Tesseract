@@ -22,7 +22,8 @@ app.post('/doOCR', async (req, res) => {
         .then(
           (response) => {
             res.send({
-              'text': response.data.text
+              'text': response.data.text,
+              'confidence': response.data.confidence
             });
             console.log(response);
           });

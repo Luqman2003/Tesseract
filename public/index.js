@@ -40,12 +40,33 @@
     fetch('/doOCR', {method: 'POST', body: params})
       .then(statusCheck)
       .then(res => res.json())
-      .then((res) => {
-        console.log(res);
-      })
+      .then(processData)
       .catch((error) => {
         console.log(error);
       })
+  }
+
+  function processData(response) {
+    let confidence = response.confidence;
+    let text = create('p');
+    // TODO: once i finish the HTML/structure of the page, put the text
+    // somewhere on the screen in a nice way
+    if (confidence >= 85) {
+      console.log(response.text);
+      console.log(response.confidence);
+      text.textContent(response.text);
+    } else { // the confidence level that the tesseract API sent back
+             // wasn't sufficient enough to send in good-faith
+      // an error message to describe how the image provided isn't in
+      // good enough condition to send back the text
+      text.textContent('Unfortunately, the image that you provided isn\'t clear enough to give an accurate/confident response');
+      let link = document.createTextNode('For more information, click here');
+      let aTag = create('a');
+      aTag.appendChild(link);
+      aTag.href('https://golb.hplar.ch/2019/07/ocr-with-tesseractjs.html');
+      aTag.title('Information');
+      // TODO: append these tags once you finish the HTML structure
+    }
   }
 
    /**
