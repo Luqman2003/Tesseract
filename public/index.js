@@ -46,6 +46,10 @@
       })
   }
 
+  /**
+   *
+   * @param {*} response
+   */
   function processData(response) {
     let confidence = response.confidence;
     let text = create('p');
