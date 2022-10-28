@@ -1,0 +1,15 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#example {
+  display: flex;
+  background-color: #04395E;
+  color: white;
+  /* min-width: 100vw; */
+  /* margin-left: calc(50% - 50vw); */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
